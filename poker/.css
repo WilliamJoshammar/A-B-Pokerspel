@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  --gold:       #c9a84c;
+  --gold-light: #e8c87a;
+  --gold-dark:  #8b6914;
+  --cream:      #f5edd8;
+  --card-bg:    #faf7f0;
+  --red:        #c0392b;
+  --shadow:     rgba(0,0,0,0.6);
+}
+
+/* ── RESET ─────────────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Crimson Text', Georgia, serif;
+  background: radial-gradient(ellipse at center, #0d1f0f 0%, #050a06 100%);
+  min-height: 100vh;
+  color: var(--cream);
+  overflow-x: hidden;
+}
+
+
+/* ── SCREENS ────────────────────────────────────────── */
+.screen { display:none; min-height:100vh; }
+.screen.active { display:flex; flex-direction:column; }
