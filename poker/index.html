@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>♠ Royal Poker ♠</title>
+  <link rel="stylesheet" href="poker.css">
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen" class="screen active">
+  <div class="login-card">
+    <div class="logo">ROYAL</div>
+    <div class="logo">POKER</div>
+    <div class="logo-suits">&#9824; &#9829; &#9830; &#9827;</div>
+    <input class="inp" id="username-input" type="text"
+           placeholder="Ditt spelarnamn..." maxlength="20"
+           onkeydown="if(event.key==='Enter') login()">
+    <button class="btn btn-gold btn-full" onclick="login()">Ga till bordet</button>
+    <div id="login-error"></div>
+  </div>
+</div>
+
+<!-- LOBBY SCREEN -->
+<div id="lobby-screen" class="screen">
+  <div class="lobby-header">
+    <div class="lobby-title">&#9824; Lobbyn</div>
+    <div class="player-info">
+      <span id="lobby-username"></span>
+      <span class="chip-count">&#127922; <span id="lobby-chips">0</span></span>
+      <button class="btn btn-outline btn-sm" onclick="logout()">Logga ut</button>
+    </div>
+  </div>
+  <div class="create-room-form">
+    <input class="inp" id="room-name-input" type="text"
+           placeholder="Namn pa nytt bord..." value="Pokerbord 1">
+    <button class="btn btn-gold" onclick="createRoom()">+ Skapa bord</button>
+  </div>
+  <div class="rooms-grid" id="rooms-list">
+    <div class="no-rooms">Inga aktiva bord. Skapa ett nytt!</div>
+  </div>
+</div>
+
+</body>
+</html>
