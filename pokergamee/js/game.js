@@ -119,3 +119,40 @@ function startGame() {
         body: 'room=' + ROOM_ID + '&user=' + MY_USER_ID + '&action=start'
     }).then(r => r.json()).then(fetchState);
 }
+
+// ===== CHATT =====
+function fetchChat() {
+    fetch('/pokerGame/api/chat_fetch.php?room=' + ROOM_ID + '&last_id=' + lastChatId)
+        .then(r => r.json())
+        .then(msgs => {
+            if (!msgs.length) return;
+            const box = document.getElementById('chat-messages');
+            msgs.forEach(m => {
+                lastChatId = Math.max(lastChatId, m.id);
+                const div = document.createElement('div');
+                div.className = 'chat-msg' + (m.user_id == MY_USER_ID ? ' mine' : '');
+                div.innerHTML = '<b>' + escapeHtml(m.username) + ':</b> ' + escapeHtml(m.message);
+                box.appendChild(div);
+            });
+            box.scrollTop = box.scrollHeight;
+        });
+}
+
+function sendChat() {
+    const input = document.getElementById('chat-input');
+    const msg = input.value.trim();
+    if (!msg) return;
+    input.value = '';
+    fetch('/pokerGame/api/chat_send.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'room=' + ROOM_ID + '&user=' + MY_USER_ID + '&message=' + encodeURIComponent(msg)
+    });
+}
+
+function escapeHtml(text) {
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
