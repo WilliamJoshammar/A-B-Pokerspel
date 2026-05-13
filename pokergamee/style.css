@@ -1,1 +1,151 @@
-/* ===== css ===== */
+/* ============================================
+   POKER SPEL - CSS
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Sans:wght@400;600&display=swap');
+
+:root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #21262d;
+    --border: #30363d;
+    --green: #1a5c2a;
+    --green-light: #238636;
+    --gold: #d4a017;
+    --gold-light: #f0c040;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --red: #e74c3c;
+    --blue: #2196f3;
+    --radius: 10px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* ===== AUTH PAGE ===== */
+.auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at center, #1a2a1a 0%, #0d1117 70%);
+}
+
+.auth-container {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    width: 360px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.auth-logo {
+    text-align: center;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.auth-logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--gold);
+    letter-spacing: 4px;
+}
+
+.suit { font-size: 1.6rem; }
+.suit.red { color: var(--red); }
+
+.tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+.tab {
+    flex: 1;
+    padding: 10px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+.tab.active { background: var(--green); color: #fff; border-color: var(--green-light); }
+
+.auth-form { display: flex; flex-direction: column; gap: 12px; }
+.auth-form.hidden { display: none; }
+
+.auth-form input {
+    padding: 12px 16px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.auth-form input:focus { border-color: var(--gold); }
+
+.btn-primary {
+    padding: 12px 24px;
+    background: var(--gold);
+    color: #000;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.alert {
+    padding: 10px 14px;
+    border-radius: var(--radius);
+    margin-bottom: 14px;
+    font-size: 0.88rem;
+}
+.alert.error { background: rgba(231,76,60,0.15); border: 1px solid rgba(231,76,60,0.4); color: #e74c3c; }
+.alert.success { background: rgba(35,134,54,0.15); border: 1px solid rgba(35,134,54,0.4); color: #3fb950; }
+
+/* ===== TOP BAR ===== */
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.logo-small {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+}
+
+.user-info { display: flex; align-items: center; gap: 16px; font-size: 0.9rem; }
+.chips { color: var(--gold); font-weight: 600; }
+
+.btn-logout {
+    padding: 6px 14px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.btn-logout:hover { color: var(--text); }
